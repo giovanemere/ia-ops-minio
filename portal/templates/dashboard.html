@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA-Ops MinIO Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <div x-data="dashboard()" x-init="init()">
+        <!-- Header -->
+        <header class="bg-blue-600 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <h1 class="text-3xl font-bold">🗄️ IA-Ops MinIO Portal</h1>
+                <p class="text-blue-200">Portal unificado de almacenamiento y documentación</p>
+            </div>
+        </header>
+
+        <!-- Status Cards -->
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <!-- MinIO Status -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div :class="status.minio_api === 'healthy' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" 
+                                 class="w-8 h-8 rounded-full flex items-center justify-center">
+                                <span x-text="status.minio_api === 'healthy' ? '✓' : '✗'"></span>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">MinIO API</h3>
+                            <p class="text-gray-600" x-text="status.minio_api || 'Checking...'"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buckets Count -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="bg-blue-100 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center">
+                                📦
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Buckets</h3>
+                            <p class="text-gray-600" x-text="status.bucket_count || '0'"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentation -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="bg-purple-100 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center">
+                                📚
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Docs</h3>
+                            <p class="text-gray-600">Available</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last Update -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="bg-gray-100 text-gray-800 w-8 h-8 rounded-full flex items-center justify-center">
+                                🕒
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Updated</h3>
+                            <p class="text-gray-600 text-sm" x-text="lastUpdate"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <a href="http://localhost:9899" target="_blank" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🖥️</div>
+                        <h3 class="text-xl font-semibold mb-2">MinIO Console</h3>
+                        <p class="text-gray-600">Administrar buckets y objetos</p>
+                        <p class="text-sm text-blue-600 mt-2">localhost:9899</p>
+                    </div>
+                </a>
+
+                <a href="http://localhost:6541" target="_blank" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">📖</div>
+                        <h3 class="text-xl font-semibold mb-2">Documentación</h3>
+                        <p class="text-gray-600">Guías y referencias</p>
+                        <p class="text-sm text-blue-600 mt-2">localhost:6541</p>
+                    </div>
+                </a>
+
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🔌</div>
+                        <h3 class="text-xl font-semibold mb-2">API REST</h3>
+                        <p class="text-gray-600">Endpoint disponible</p>
+                        <p class="text-sm text-blue-600 mt-2">localhost:8848</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- URLs Section -->
+            <div class="bg-white rounded-lg shadow mb-8">
+                <div class="px-6 py-4 border-b">
+                    <h2 class="text-xl font-semibold">🌐 URLs de Acceso</h2>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="border rounded-lg p-4">
+                            <h3 class="font-semibold text-blue-600">Dashboard Principal</h3>
+                            <p class="text-sm text-gray-600">http://localhost:6540</p>
+                        </div>
+                        <div class="border rounded-lg p-4">
+                            <h3 class="font-semibold text-green-600">MinIO Console</h3>
+                            <p class="text-sm text-gray-600">http://localhost:9899</p>
+                        </div>
+                        <div class="border rounded-lg p-4">
+                            <h3 class="font-semibold text-purple-600">Documentación</h3>
+                            <p class="text-sm text-gray-600">http://localhost:6541</p>
+                        </div>
+                        <div class="border rounded-lg p-4">
+                            <h3 class="font-semibold text-orange-600">API REST</h3>
+                            <p class="text-sm text-gray-600">http://localhost:8848</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buckets List -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b">
+                    <h2 class="text-xl font-semibold">Buckets Disponibles</h2>
+                </div>
+                <div class="p-6">
+                    <div x-show="buckets.length === 0" class="text-center text-gray-500 py-8">
+                        Cargando buckets...
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <template x-for="bucket in buckets" :key="bucket.name">
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-2xl mr-2">🗂️</span>
+                                    <h3 class="font-semibold" x-text="bucket.name"></h3>
+                                </div>
+                                <p class="text-sm text-gray-600" x-text="new Date(bucket.creation_date).toLocaleDateString()"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function dashboard() {
+            return {
+                status: {},
+                buckets: [],
+                lastUpdate: '',
+                
+                init() {
+                    this.loadStatus();
+                    this.loadBuckets();
+                    setInterval(() => this.loadStatus(), 30000); // Update every 30s
+                },
+                
+                async loadStatus() {
+                    try {
+                        const response = await fetch('/api/status');
+                        this.status = await response.json();
+                        this.lastUpdate = new Date().toLocaleTimeString();
+                    } catch (error) {
+                        console.error('Error loading status:', error);
+                    }
+                },
+                
+                async loadBuckets() {
+                    try {
+                        const response = await fetch('/api/buckets');
+                        const data = await response.json();
+                        this.buckets = data.buckets || [];
+                    } catch (error) {
+                        console.error('Error loading buckets:', error);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+minio==7.1.17
+requests==2.31.0
+python-dotenv==1.0.0
+mkdocs==1.5.3
+mkdocs-material==9.4.6
+mkdocs-git-revision-date-localized-plugin==1.2.0
+pymdown-extensions==10.3.1

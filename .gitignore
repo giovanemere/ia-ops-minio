@@ -1,0 +1,33 @@
+# Environment files (mantener .env.example)
+.env
+
+# Data and logs
+data/*
+logs/*
+!data/.gitkeep
+!logs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+venv-docs/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp

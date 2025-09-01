@@ -1,0 +1,51 @@
+FROM python:3.11-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    supervisor \
+    nginx \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install MinIO binary
+RUN wget https://dl.min.io/server/minio/release/linux-amd64/minio -O /usr/local/bin/minio \
+    && chmod +x /usr/local/bin/minio
+
+# Install MinIO Client
+RUN wget https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc \
+    && chmod +x /usr/local/bin/mc
+
+WORKDIR /app
+
+# Copy requirements
+COPY requirements-integrated.txt .
+RUN pip install --no-cache-dir -r requirements-integrated.txt
+
+# Copy application files
+COPY api/ ./api/
+COPY portal/ ./portal/
+COPY docs_site/ ./docs_site/
+COPY mkdocs.yml .
+COPY scripts/ ./scripts/
+COPY config/ ./config/
+
+# Create directories
+RUN mkdir -p /data /app/logs /etc/supervisor/conf.d
+
+# Copy configuration files
+COPY config/supervisor.conf /etc/supervisor/conf.d/
+COPY config/nginx.conf /etc/nginx/sites-available/default
+
+# Create user
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN chown -R appuser:appuser /app /data
+RUN chown appuser:appuser /usr/local/bin/minio /usr/local/bin/mc
+
+EXPOSE 6540 9000 9001 8848 6541
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD curl -f http://localhost:6540/health || exit 1
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

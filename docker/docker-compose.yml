@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  minio:
+    image: minio/minio:${MINIO_VERSION:-RELEASE.2023-10-25T06-33-25Z}
+    container_name: iaops-minio-storage
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER:-minioadmin}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD:-minioadmin123}
+      - MINIO_BROWSER_REDIRECT_URL=http://localhost:${MINIO_CONSOLE_PORT:-9899}
+    ports:
+      - "${MINIO_API_PORT:-9898}:9000"
+      - "${MINIO_CONSOLE_PORT:-9899}:9001"
+    volumes:
+      - ../data:/data
+      - ../logs:/var/log/minio
+      - ../config:/etc/minio
+    networks:
+      - minio-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+      start_period: 40s
+
+  minio-api:
+    build:
+      context: ../api
+      dockerfile: Dockerfile
+    container_name: iaops-minio-api
+    restart: unless-stopped
+    environment:
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=${MINIO_ROOT_USER:-minioadmin}
+      - MINIO_SECRET_KEY=${MINIO_ROOT_PASSWORD:-minioadmin123}
+      - API_PORT=${MINIO_REST_API_PORT:-8848}
+    ports:
+      - "${MINIO_REST_API_PORT:-8848}:8848"
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - minio-network
+    volumes:
+      - ../logs:/app/logs
+
+  minio-setup:
+    image: minio/mc:latest
+    container_name: iaops-minio-setup
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - minio-network
+    volumes:
+      - ../scripts:/scripts
+    entrypoint: >
+      /bin/sh -c "
+      echo 'Waiting for MinIO to be ready...';
+      sleep 10;
+      /usr/bin/mc alias set minio http://minio:9000 ${MINIO_ROOT_USER:-minioadmin} ${MINIO_ROOT_PASSWORD:-minioadmin123};
+      echo 'Creating buckets...';
+      /usr/bin/mc mb minio/techdocs-storage --ignore-existing;
+      /usr/bin/mc mb minio/repositories-backup --ignore-existing;
+      /usr/bin/mc mb minio/build-artifacts --ignore-existing;
+      /usr/bin/mc mb minio/static-assets --ignore-existing;
+      echo 'Setting bucket policies...';
+      /usr/bin/mc policy set public minio/techdocs-storage;
+      /usr/bin/mc policy set public minio/static-assets;
+      echo 'MinIO setup completed successfully';
+      exit 0;
+      "
+
+networks:
+  minio-network:
+    driver: bridge
+    name: iaops-minio-network

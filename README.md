@@ -62,9 +62,29 @@ open http://localhost:6540
 | Script | Función | Uso |
 |--------|---------|-----|
 | `deploy-clean.sh` | **Despliegue limpio completo** | **⭐ Recomendado** |
+| `manage.sh` | **Gestión de servicios** | **⭐ Uso diario** |
 | `verify-system.sh` | Verificar estado del sistema | Diagnóstico |
 | `build-integrated.sh` | Solo build local | Desarrollo |
 | `publish-integrated.sh` | Solo publicar a Docker Hub | CI/CD |
+
+### Gestión de Servicios
+
+```bash
+# Iniciar servicios
+./scripts/manage.sh start
+
+# Detener servicios
+./scripts/manage.sh stop
+
+# Reiniciar servicios
+./scripts/manage.sh restart
+
+# Ver estado
+./scripts/manage.sh status
+
+# Ver logs en tiempo real
+./scripts/manage.sh logs
+```
 
 ## 🔧 Configuración
 

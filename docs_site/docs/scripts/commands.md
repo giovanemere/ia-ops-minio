@@ -2,6 +2,26 @@
 
 ## Scripts Principales
 
+### `manage.sh` ⭐ **Uso Diario**
+Gestión básica de servicios.
+
+```bash
+# Iniciar servicios
+./scripts/manage.sh start
+
+# Detener servicios
+./scripts/manage.sh stop
+
+# Reiniciar servicios
+./scripts/manage.sh restart
+
+# Ver estado de servicios
+./scripts/manage.sh status
+
+# Ver logs en tiempo real
+./scripts/manage.sh logs
+```
+
 ### `deploy-clean.sh` ⭐ **Recomendado**
 Despliegue limpio y completo del sistema.
 

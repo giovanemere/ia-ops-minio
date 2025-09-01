@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - IA-Ops MinIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">🔌 Documentación de APIs</h1>
+                    <p class="text-blue-200">Guía completa de las APIs REST y MinIO</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="http://localhost:6541" target="_blank" class="bg-purple-500 hover:bg-purple-700 px-4 py-2 rounded">📚 MkDocs</a>
+                    <a href="/" class="bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">← Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- REST API Section -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b bg-orange-50">
+                <h2 class="text-2xl font-semibold text-orange-800">🚀 REST API (Puerto 8848)</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Endpoints Disponibles</h3>
+                        <div class="space-y-3">
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <code class="text-sm bg-gray-100 px-2 py-1 rounded">GET /health</code>
+                                <p class="text-sm text-gray-600 mt-1">Verificar estado del servicio</p>
+                            </div>
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <code class="text-sm bg-gray-100 px-2 py-1 rounded">GET /api/status</code>
+                                <p class="text-sm text-gray-600 mt-1">Estado del sistema completo</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <code class="text-sm bg-gray-100 px-2 py-1 rounded">GET /api/buckets</code>
+                                <p class="text-sm text-gray-600 mt-1">Listar todos los buckets</p>
+                            </div>
+                            <div class="border-l-4 border-indigo-500 pl-4">
+                                <code class="text-sm bg-gray-100 px-2 py-1 rounded">GET /api/info</code>
+                                <p class="text-sm text-gray-600 mt-1">Información del sistema</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Ejemplos de Uso</h3>
+                        <div class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm">
+                            <div class="mb-2"># Verificar estado</div>
+                            <div class="mb-4">curl http://localhost:8848/health</div>
+                            
+                            <div class="mb-2"># Obtener buckets</div>
+                            <div class="mb-4">curl http://localhost:8848/api/buckets</div>
+                            
+                            <div class="mb-2"># Ver estado del sistema</div>
+                            <div>curl http://localhost:8848/api/status</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MinIO API Section -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b bg-red-50">
+                <h2 class="text-2xl font-semibold text-red-800">🗄️ MinIO API (Puerto 9898)</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">API S3 Compatible</h3>
+                        <p class="text-gray-600 mb-4">La API de MinIO es completamente compatible con Amazon S3. Puedes usar cualquier SDK de AWS S3.</p>
+                        
+                        <h4 class="font-semibold mb-2">Configuración de Cliente Python</h4>
+                        <div class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm mb-4">
+                            <div>import boto3</div><br>
+                            <div>client = boto3.client(</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;'s3',</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;endpoint_url='http://localhost:9898',</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;aws_access_key_id='minioadmin',</div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;aws_secret_access_key='minioadmin123'</div>
+                            <div>)</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Operaciones Básicas</h3>
+                        <div class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm">
+                            <div class="mb-2"># Listar buckets</div>
+                            <div class="mb-4">curl -X GET http://localhost:9898/</div>
+                            
+                            <div class="mb-2"># Crear bucket</div>
+                            <div class="mb-4">curl -X PUT http://localhost:9898/mi-bucket</div>
+                            
+                            <div class="mb-2"># Subir archivo</div>
+                            <div>curl -X PUT http://localhost:9898/bucket/file.txt \<br>&nbsp;&nbsp;--data-binary @file.txt</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buckets Section -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b bg-green-50">
+                <h2 class="text-2xl font-semibold text-green-800">📦 Buckets Predefinidos</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-blue-600">techdocs-storage</h3>
+                        <p class="text-sm text-gray-600">Documentación principal (público)</p>
+                    </div>
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-red-600">repositories-backup</h3>
+                        <p class="text-sm text-gray-600">Respaldos de repositorios (privado)</p>
+                    </div>
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-purple-600">build-artifacts</h3>
+                        <p class="text-sm text-gray-600">Artefactos de construcción (privado)</p>
+                    </div>
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-green-600">static-assets</h3>
+                        <p class="text-sm text-gray-600">Recursos estáticos (público)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Authentication Section -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b bg-yellow-50">
+                <h2 class="text-2xl font-semibold text-yellow-800">🔐 Autenticación</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Credenciales por Defecto</h3>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <div class="mb-2"><strong>Usuario:</strong> <code>minioadmin</code></div>
+                            <div><strong>Contraseña:</strong> <code>minioadmin123</code></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Variables de Entorno</h3>
+                        <div class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm">
+                            <div>MINIO_ROOT_USER=minioadmin</div>
+                            <div>MINIO_ROOT_PASSWORD=minioadmin123</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 IA-Ops Team - MinIO Portal</p>
+            <div class="mt-4">
+                <a href="/" class="text-blue-400 hover:text-blue-300 mr-4">Dashboard</a>
+                <a href="http://localhost:9899" target="_blank" class="text-blue-400 hover:text-blue-300 mr-4">MinIO Console</a>
+                <a href="http://localhost:6541" target="_blank" class="text-blue-400 hover:text-blue-300">Documentación</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

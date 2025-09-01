@@ -11,6 +11,7 @@ NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+IMAGE_NAME="ia-ops-minio-integrated"
 
 echo -e "${BLUE}🗄️  IA-Ops MinIO Setup${NC}"
 echo "=================================="
@@ -34,23 +35,33 @@ echo -e "${GREEN}✅ Prerequisites checked${NC}"
 echo -e "${YELLOW}📁 Creating directories...${NC}"
 mkdir -p "$PROJECT_DIR/data"
 mkdir -p "$PROJECT_DIR/logs"
-mkdir -p "$PROJECT_DIR/config/policies"
 
 echo -e "${GREEN}✅ Directories created${NC}"
 
 # Setup environment file
 echo -e "${YELLOW}⚙️  Setting up environment...${NC}"
-if [ ! -f "$PROJECT_DIR/docker/.env" ]; then
-    cp "$PROJECT_DIR/docker/.env.example" "$PROJECT_DIR/docker/.env"
+if [ ! -f "$PROJECT_DIR/.env" ]; then
+    cp "$PROJECT_DIR/.env.example" "$PROJECT_DIR/.env"
     echo -e "${GREEN}✅ Environment file created${NC}"
 else
     echo -e "${GREEN}✅ Environment file already exists${NC}"
 fi
 
+# Check if image exists locally
+echo -e "${YELLOW}🔍 Checking for local image...${NC}"
+if docker images --format "table {{.Repository}}:{{.Tag}}" | grep -q "$IMAGE_NAME:latest"; then
+    echo -e "${GREEN}✅ Image $IMAGE_NAME:latest found locally${NC}"
+else
+    echo -e "${YELLOW}🔨 Building image $IMAGE_NAME:latest...${NC}"
+    cd "$PROJECT_DIR"
+    docker build -f Dockerfile.integrated -t "$IMAGE_NAME:latest" .
+    echo -e "${GREEN}✅ Image built successfully${NC}"
+fi
+
 # Start services
 echo -e "${YELLOW}🚀 Starting MinIO services...${NC}"
-cd "$PROJECT_DIR/docker"
-docker compose up -d
+cd "$PROJECT_DIR"
+docker compose -f docker-compose.integrated.yml up -d
 
 # Wait for services
 echo -e "${YELLOW}⏳ Waiting for services to be ready...${NC}"
@@ -58,6 +69,12 @@ sleep 15
 
 # Verify services
 echo -e "${YELLOW}🔍 Verifying services...${NC}"
+if curl -f http://localhost:6540/health > /dev/null 2>&1; then
+    echo -e "${GREEN}✅ Portal Dashboard is healthy${NC}"
+else
+    echo -e "${RED}❌ Portal Dashboard is not responding${NC}"
+fi
+
 if curl -f http://localhost:9898/minio/health/live > /dev/null 2>&1; then
     echo -e "${GREEN}✅ MinIO API is healthy${NC}"
 else
@@ -65,18 +82,20 @@ else
 fi
 
 if curl -f http://localhost:8848/health > /dev/null 2>&1; then
-    echo -e "${GREEN}✅ MinIO REST API is healthy${NC}"
+    echo -e "${GREEN}✅ REST API is healthy${NC}"
 else
-    echo -e "${RED}❌ MinIO REST API is not responding${NC}"
+    echo -e "${RED}❌ REST API is not responding${NC}"
 fi
 
 echo ""
-echo -e "${GREEN}🎉 MinIO setup completed!${NC}"
+echo -e "${GREEN}🎉 MinIO Portal setup completed!${NC}"
 echo ""
 echo -e "${BLUE}📊 Access URLs:${NC}"
-echo -e "   MinIO Console:  ${YELLOW}http://localhost:9899${NC}"
-echo -e "   MinIO API:      ${YELLOW}http://localhost:9898${NC}"
-echo -e "   REST API:       ${YELLOW}http://localhost:8848${NC}"
+echo -e "   Portal Dashboard: ${YELLOW}http://localhost:6540${NC}"
+echo -e "   MinIO Console:    ${YELLOW}http://localhost:9899${NC}"
+echo -e "   MinIO API:        ${YELLOW}http://localhost:9898${NC}"
+echo -e "   REST API:         ${YELLOW}http://localhost:8848${NC}"
+echo -e "   Documentation:    ${YELLOW}http://localhost:6541${NC}"
 echo ""
 echo -e "${BLUE}🔑 Default Credentials:${NC}"
 echo -e "   Username: ${YELLOW}minioadmin${NC}"

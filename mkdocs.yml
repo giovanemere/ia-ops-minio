@@ -39,8 +39,6 @@ theme:
 plugins:
   - search:
       lang: es
-  - git-revision-date-localized:
-      type: date
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -48,6 +46,13 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
       custom_fences:
         - name: mermaid
           class: mermaid
@@ -79,6 +84,7 @@ nav:
     - Introducción: api/introduction.md
     - Endpoints: api/endpoints.md
     - Ejemplos: api/examples.md
+  - Documentación APIs: api-docs.md
   - Despliegue:
     - Docker: deployment/docker.md
     - Producción: deployment/production.md

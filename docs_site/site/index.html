@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA-Ops MinIO Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-3xl font-bold">📚 IA-Ops MinIO Documentation</h1>
+            <p class="text-blue-200">Documentación completa del sistema MinIO</p>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="api-docs.html" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                <div class="text-center">
+                    <div class="text-4xl mb-4">🔌</div>
+                    <h3 class="text-xl font-semibold mb-2">API Documentation</h3>
+                    <p class="text-gray-600">Documentación completa de APIs REST y MinIO</p>
+                </div>
+            </a>
+
+            <a href="http://localhost:6540" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                <div class="text-center">
+                    <div class="text-4xl mb-4">🏠</div>
+                    <h3 class="text-xl font-semibold mb-2">Dashboard</h3>
+                    <p class="text-gray-600">Portal principal del sistema</p>
+                </div>
+            </a>
+
+            <a href="http://localhost:9899" target="_blank" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                <div class="text-center">
+                    <div class="text-4xl mb-4">🖥️</div>
+                    <h3 class="text-xl font-semibold mb-2">MinIO Console</h3>
+                    <p class="text-gray-600">Interfaz de administración</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow mt-8 p-6">
+            <h2 class="text-2xl font-semibold mb-4">🚀 Inicio Rápido</h2>
+            <div class="bg-gray-900 text-green-400 p-4 rounded-lg">
+                <div># Clonar repositorio</div>
+                <div>git clone git@github.com:giovanemere/ia-ops-minio.git</div>
+                <div>cd ia-ops-minio</div><br>
+                <div># Despliegue completo</div>
+                <div>./scripts/deploy-clean.sh</div><br>
+                <div># Acceder al dashboard</div>
+                <div>open http://localhost:6540</div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow mt-8 p-6">
+            <h2 class="text-2xl font-semibold mb-4">🌐 URLs del Sistema</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="border rounded p-3">
+                    <strong>Dashboard:</strong> <code>http://localhost:6540</code>
+                </div>
+                <div class="border rounded p-3">
+                    <strong>MinIO Console:</strong> <code>http://localhost:9899</code>
+                </div>
+                <div class="border rounded p-3">
+                    <strong>Documentación:</strong> <code>http://localhost:6541</code>
+                </div>
+                <div class="border rounded p-3">
+                    <strong>REST API:</strong> <code>http://localhost:8848</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

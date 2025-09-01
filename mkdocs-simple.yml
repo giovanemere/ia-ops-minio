@@ -1,0 +1,23 @@
+site_name: IA-Ops MinIO API Documentation
+site_description: Documentación de APIs para MinIO
+docs_dir: docs_site/docs
+site_dir: docs_site/site
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: blue
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - admonition
+
+nav:
+  - Inicio: index.md
+  - Documentación APIs: api-docs.md

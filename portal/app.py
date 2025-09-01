@@ -68,5 +68,10 @@ def api_buckets():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api-docs')
+def api_docs():
+    """Documentación de APIs"""
+    return render_template('api-docs.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6542, debug=False)

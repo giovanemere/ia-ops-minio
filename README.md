@@ -1,6 +1,6 @@
 # 🗄️ IA-Ops MinIO Storage Solution
 
-[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
+[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
 [![Docker](https://img.shields.io/badge/docker-ready-green.svg)](https://hub.docker.com/repositories/edissonz8809)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 

@@ -1,77 +1,54 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [1.4.0] - 2025-09-02
 
-## [v1.0.0] - 2025-01-01
-
-### 🎉 Initial Release - Complete IA-Ops MinIO Solution
-
-#### ✨ Features
-- **Portal Integrado**: Dashboard web unificado con navegación completa
+### ✨ Nuevas Características
+- **PostgreSQL Integration**: Configuración automática con puerto 5434
+- **Sistema de Backup Completo**: Backup automático de repositorios con soporte OneDrive
+- **Portal Unificado**: Dashboard integrado con navegación completa
 - **Documentación Dual**: MkDocs completo + API Docs integrada
-- **S3 Compatible**: API completamente compatible con Amazon S3
-- **REST API**: Endpoints personalizados para gestión simplificada
-- **Docker Ready**: Un solo contenedor para todo el ecosistema
-- **Auto-setup**: Buckets y políticas preconfiguradas
+- **REST API Personalizada**: Endpoints customizados para gestión simplificada
+- **Auto-setup**: Buckets y políticas preconfiguradas automáticamente
 
-#### 🌐 URLs de Acceso
+### 🔧 Optimizaciones
+- **MinIO Actualizado**: Última versión Community Edition (RELEASE.2025-07-23T15-54-02Z)
+- **Configuración Automática**: Script `update-env.sh` detecta PostgreSQL existente
+- **Gestión Simplificada**: Script `manage.sh` para operaciones diarias
+- **Docker Optimizado**: Imagen integrada con todos los servicios
+- **Backup System**: API REST para gestión de backups
+
+### 🐛 Correcciones
+- **Puerto PostgreSQL**: Corregida configuración para usar puerto 5434 (Docker)
+- **Conflictos de Contenedores**: Resolución automática de nombres duplicados
+- **Variables de Entorno**: Generación automática de claves de seguridad
+- **Health Checks**: Verificación completa del estado del sistema
+
+### 📚 Documentación
+- **Guía Completa**: Documentación actualizada con todos los servicios
+- **URLs de Acceso**: Lista completa de servicios y puertos
+- **Troubleshooting**: Guía de solución de problemas comunes
+- **API Documentation**: Documentación integrada de todas las APIs
+
+### 🔐 Seguridad
+- **JWT Secrets**: Generación automática de claves únicas
+- **API Keys**: Claves de API generadas automáticamente
+- **Backup Seguro**: Configuración de backup con OneDrive opcional
+
+### 🌐 URLs de Servicios
 - **Dashboard Principal**: http://localhost:6540
 - **MinIO Console**: http://localhost:9899
-- **Documentación MkDocs**: http://localhost:6541
-- **API Documentation**: http://localhost:6540/api-docs
+- **Documentación**: http://localhost:6541
 - **REST API**: http://localhost:8848
 - **MinIO API**: http://localhost:9898
 
-#### 📚 Documentación Completa
-- **12+ páginas nuevas** de documentación profesional
-- **Guía de Inicio**: Instalación, configuración, primer uso
-- **MinIO**: Arquitectura, buckets, políticas de acceso
-- **API REST**: Introducción, endpoints, ejemplos completos
-- **Despliegue**: Docker, producción, monitoreo
-- **Scripts**: Comandos, automatización
-- **Referencia**: Variables de entorno, troubleshooting
+## [1.3.0] - 2025-09-01
+### Características Anteriores
+- Sistema base de MinIO
+- Configuración Docker básica
+- Scripts de despliegue iniciales
 
-#### 🛠️ Scripts de Gestión
-- `deploy-clean.sh` - Despliegue limpio completo
-- `manage.sh` - Gestión diaria de servicios (start/stop/restart/status/logs)
-- `verify-system.sh` - Verificación del sistema
-- `build-integrated.sh` - Build local
-- `publish-integrated.sh` - Publicación a Docker Hub
-
-#### 🔧 Configuración
-- Variables de entorno completas
-- Configuración de desarrollo y producción
-- Buckets predefinidos con políticas
-- Integración con Prometheus y Grafana
-- Soporte para SSL/TLS
-
-#### 🐳 Docker Integration
-- Imagen integrada: `edissonz8809/ia-ops-minio-integrated:latest`
-- Un solo contenedor con todos los servicios
-- Health checks implementados
-- Volúmenes persistentes configurados
-
-#### 🔐 Seguridad
-- Credenciales configurables
-- Políticas de acceso granulares
-- Soporte para certificados SSL
-- Variables de entorno seguras
-
-#### 📊 Monitoreo
-- Health checks automáticos
-- Logs centralizados
-- Métricas de Prometheus
-- Alertas configurables
-
-### 🚀 Quick Start
-```bash
-git clone git@github.com:giovanemere/ia-ops-minio.git
-cd ia-ops-minio
-./scripts/deploy-clean.sh
-open http://localhost:6540
-```
-
-### 🔗 Links
-- **GitHub**: https://github.com/giovanemere/ia-ops-minio
-- **Docker Hub**: https://hub.docker.com/repositories/edissonz8809
-- **Documentation**: http://localhost:6541 (after deployment)
+## [1.0.0] - 2025-09-01
+### Lanzamiento Inicial
+- Implementación base de IA-Ops MinIO
+- Configuración Docker Compose
+- Documentación inicial

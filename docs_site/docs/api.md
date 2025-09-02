@@ -12,8 +12,8 @@ GET /health
 ```json
 {
   "status": "healthy",
-  "timestamp": "2025-09-01T20:19:00.000Z",
-  "buckets_count": 4,
+  "timestamp": "2025-09-02T01:01:58.649530",
+  "buckets_count": 9,
   "minio_endpoint": "localhost:9000"
 }
 ```
@@ -31,51 +31,19 @@ GET /buckets
 {
   "buckets": [
     {
-      "name": "techdocs-storage",
-      "creation_date": "2025-09-01T10:00:00.000Z"
+      "name": "static-assets",
+      "creation_date": "2025-09-01T18:36:33.820000+00:00"
     },
     {
-      "name": "repositories-backup", 
-      "creation_date": "2025-09-01T10:00:00.000Z"
+      "name": "build-artifacts", 
+      "creation_date": "2025-09-01T18:36:33.781000+00:00"
     }
   ],
   "count": 2
 }
 ```
 
-#### Crear Bucket
-
-```http
-POST /buckets
-Content-Type: application/json
-
-{
-  "name": "mi-nuevo-bucket"
-}
-```
-
-#### Eliminar Bucket
-
-```http
-DELETE /buckets/{bucket_name}
-```
-
 ### Gestión de Objetos
-
-#### Subir Archivo
-
-```http
-POST /buckets/{bucket_name}/upload
-Content-Type: multipart/form-data
-
-file: [archivo]
-```
-
-#### Descargar Archivo
-
-```http
-GET /buckets/{bucket_name}/objects/{object_name}
-```
 
 #### Listar Objetos
 
@@ -83,17 +51,55 @@ GET /buckets/{bucket_name}/objects/{object_name}
 GET /buckets/{bucket_name}/objects
 ```
 
+**Parámetros de consulta:**
+- `prefix` (opcional): Filtrar por prefijo
+- `recursive` (opcional): Búsqueda recursiva (true/false)
+
+**Ejemplo:**
+```http
+GET /buckets/static-assets/objects?prefix=docs/&recursive=true
+```
+
 **Respuesta:**
 ```json
 {
+  "bucket": "static-assets",
   "objects": [
     {
-      "name": "documento.pdf",
+      "name": "docs/documento.pdf",
       "size": 1024000,
-      "last_modified": "2025-09-01T15:30:00.000Z"
+      "last_modified": "2025-09-01T15:30:00.000Z",
+      "etag": "d41d8cd98f00b204e9800998ecf8427e",
+      "content_type": "application/pdf"
     }
   ],
-  "count": 1
+  "count": 1,
+  "prefix": "docs/",
+  "recursive": true
+}
+```
+
+### Estadísticas del Sistema
+
+```http
+GET /stats
+```
+
+**Respuesta:**
+```json
+{
+  "total_buckets": 9,
+  "total_objects": 0,
+  "total_size": 0,
+  "buckets": [
+    {
+      "name": "static-assets",
+      "objects": 0,
+      "size": 0,
+      "creation_date": "2025-09-01T18:36:33.820000+00:00"
+    }
+  ],
+  "timestamp": "2025-09-02T01:02:18.544288"
 }
 ```
 
@@ -108,13 +114,17 @@ import requests
 response = requests.get('http://localhost:8848/health')
 print(response.json())
 
-# Crear bucket
-data = {"name": "mi-bucket"}
-response = requests.post('http://localhost:8848/buckets', json=data)
+# Listar buckets
+response = requests.get('http://localhost:8848/buckets')
+buckets = response.json()['buckets']
 
-# Subir archivo
-files = {'file': open('documento.pdf', 'rb')}
-response = requests.post('http://localhost:8848/buckets/mi-bucket/upload', files=files)
+# Listar objetos de un bucket
+response = requests.get('http://localhost:8848/buckets/static-assets/objects')
+objects = response.json()['objects']
+
+# Estadísticas del sistema
+response = requests.get('http://localhost:8848/stats')
+stats = response.json()
 ```
 
 ### cURL
@@ -123,17 +133,17 @@ response = requests.post('http://localhost:8848/buckets/mi-bucket/upload', files
 # Health check
 curl http://localhost:8848/health
 
-# Crear bucket
-curl -X POST http://localhost:8848/buckets \
-  -H "Content-Type: application/json" \
-  -d '{"name": "mi-bucket"}'
-
-# Subir archivo
-curl -X POST http://localhost:8848/buckets/mi-bucket/upload \
-  -F "file=@documento.pdf"
+# Listar buckets
+curl http://localhost:8848/buckets
 
 # Listar objetos
-curl http://localhost:8848/buckets/mi-bucket/objects
+curl http://localhost:8848/buckets/static-assets/objects
+
+# Listar objetos con filtros
+curl "http://localhost:8848/buckets/static-assets/objects?prefix=docs/&recursive=true"
+
+# Estadísticas del sistema
+curl http://localhost:8848/stats
 ```
 
 ### JavaScript
@@ -144,29 +154,27 @@ fetch('http://localhost:8848/health')
   .then(response => response.json())
   .then(data => console.log(data));
 
-// Crear bucket
-fetch('http://localhost:8848/buckets', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({name: 'mi-bucket'})
-});
+// Listar buckets
+fetch('http://localhost:8848/buckets')
+  .then(response => response.json())
+  .then(data => console.log(data.buckets));
 
-// Subir archivo
-const formData = new FormData();
-formData.append('file', fileInput.files[0]);
+// Listar objetos con filtros
+fetch('http://localhost:8848/buckets/static-assets/objects?prefix=docs/&recursive=true')
+  .then(response => response.json())
+  .then(data => console.log(data.objects));
 
-fetch('http://localhost:8848/buckets/mi-bucket/upload', {
-  method: 'POST',
-  body: formData
-});
+// Estadísticas
+fetch('http://localhost:8848/stats')
+  .then(response => response.json())
+  .then(data => console.log(data));
 ```
 
-## 🔐 Autenticación
+## 🔐 Configuración
 
-La API utiliza las credenciales de MinIO configuradas:
+La API se conecta a MinIO usando:
 
+- **Endpoint**: `localhost:9898`
 - **Usuario**: `minioadmin`
 - **Contraseña**: `minioadmin123`
 
@@ -175,8 +183,6 @@ La API utiliza las credenciales de MinIO configuradas:
 | Código | Descripción |
 |--------|-------------|
 | 200 | Operación exitosa |
-| 201 | Recurso creado |
-| 400 | Solicitud inválida |
 | 404 | Recurso no encontrado |
 | 500 | Error interno del servidor |
 

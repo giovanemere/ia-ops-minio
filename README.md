@@ -1,6 +1,6 @@
 # 🗄️ IA-Ops MinIO Storage Solution
 
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
+[![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
 [![Docker](https://img.shields.io/badge/docker-ready-green.svg)](https://hub.docker.com/repositories/edissonz8809)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -247,17 +247,20 @@ client.upload_file('archivo.txt', 'mi-bucket', 'archivo.txt')
 
 ### REST API
 ```bash
+# Health check
+curl http://localhost:8848/health
+
 # Listar buckets
-curl http://localhost:8848/api/buckets
+curl http://localhost:8848/buckets
 
-# Crear bucket
-curl -X POST http://localhost:8848/api/buckets \
-  -H "Content-Type: application/json" \
-  -d '{"name": "mi-bucket"}'
+# Listar objetos de un bucket
+curl http://localhost:8848/buckets/static-assets/objects
 
-# Subir archivo
-curl -X POST http://localhost:8848/api/buckets/mi-bucket/objects \
-  -F "file=@archivo.txt"
+# Listar objetos con filtros
+curl "http://localhost:8848/buckets/static-assets/objects?prefix=docs/&recursive=true"
+
+# Estadísticas del sistema
+curl http://localhost:8848/stats
 ```
 
 ### MinIO Client

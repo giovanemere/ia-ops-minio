@@ -27,6 +27,14 @@ except ImportError as e:
     print(f"Warning: Database module not available: {e}")
     DATABASE_AVAILABLE = False
 
+# Import backup API
+try:
+    from backup_api import backup_bp
+    BACKUP_API_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: Backup API not available: {e}")
+    BACKUP_API_AVAILABLE = False
+
 # Configure logging
 handlers = [logging.StreamHandler(sys.stdout)]
 
@@ -46,6 +54,11 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
+
+# Register backup blueprint if available
+if BACKUP_API_AVAILABLE:
+    app.register_blueprint(backup_bp)
+    logger.info("Backup API registered")
 
 # Configuration from environment variables
 MINIO_ENDPOINT = os.getenv('MINIO_ENDPOINT', 'localhost:9898')
@@ -98,6 +111,7 @@ def health_check():
                 'minio_endpoint': MINIO_ENDPOINT,
                 'buckets_count': len(buckets),
                 'database_available': DATABASE_AVAILABLE,
+                'backup_api_available': BACKUP_API_AVAILABLE,
                 'environment': ENVIRONMENT
             }
             
@@ -117,7 +131,8 @@ def health_check():
             return jsonify({
                 'status': 'unhealthy',
                 'error': 'MinIO client not initialized',
-                'database_available': DATABASE_AVAILABLE
+                'database_available': DATABASE_AVAILABLE,
+                'backup_api_available': BACKUP_API_AVAILABLE
             }), 500
     except Exception as e:
         if DATABASE_AVAILABLE:
@@ -134,7 +149,8 @@ def health_check():
         return jsonify({
             'status': 'unhealthy',
             'error': str(e),
-            'database_available': DATABASE_AVAILABLE
+            'database_available': DATABASE_AVAILABLE,
+            'backup_api_available': BACKUP_API_AVAILABLE
         }), 500
 
 @app.route('/buckets', methods=['GET'])
@@ -336,4 +352,5 @@ if __name__ == '__main__':
     logger.info(f"Starting MinIO API on port {API_PORT}")
     logger.info(f"Environment: {ENVIRONMENT}")
     logger.info(f"Database available: {DATABASE_AVAILABLE}")
+    logger.info(f"Backup API available: {BACKUP_API_AVAILABLE}")
     app.run(host='0.0.0.0', port=API_PORT, debug=DEBUG)

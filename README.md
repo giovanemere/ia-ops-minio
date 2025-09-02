@@ -1,31 +1,29 @@
 # 🗄️ IA-Ops MinIO Storage Solution
 
-[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
+[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
 [![Docker](https://img.shields.io/badge/docker-ready-green.svg)](https://hub.docker.com/repositories/edissonz8809)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 Solución de almacenamiento S3 compatible con MinIO para el ecosistema IA-Ops TechDocs.
 
-## 🚀 Despliegue Rápido
-
-### Portal Integrado (Recomendado)
-**Un solo contenedor con todo integrado**
+## 🚀 Instalación Rápida
 
 ```bash
 # 1. Clonar repositorio
-git clone git@github.com:giovanemere/ia-ops-minio.git
+git clone https://github.com/giovanemere/ia-ops-minio.git
 cd ia-ops-minio
 
-# 2. Configurar variables (opcional)
-cp .env.example .env
-# Editar .env si necesitas cambiar puertos o credenciales
+# 2. Configurar automáticamente
+./scripts/update-env.sh
 
-# 3. Despliegue limpio y completo
+# 3. Desplegar
 ./scripts/deploy-clean.sh
 
 # 4. Acceder al dashboard
 open http://localhost:6540
 ```
+
+**📖 [Guía de Instalación Completa](INSTALL.md)**
 
 ## 🌐 URLs de Acceso
 
@@ -59,6 +57,7 @@ open http://localhost:6540
 - **S3 Compatible**: API completamente compatible con Amazon S3
 - **REST API**: Endpoints personalizados para gestión simplificada
 - **PostgreSQL Integration**: Logging y estadísticas en base de datos
+- **Backup System**: Backup automático de repositorios con OneDrive
 - **Docker Ready**: Un solo contenedor para todo el ecosistema
 - **Auto-setup**: Buckets y políticas preconfiguradas
 - **Security**: Claves JWT y API generadas automáticamente
@@ -91,6 +90,45 @@ open http://localhost:6540
 
 # Ver logs en tiempo real
 ./scripts/manage.sh logs
+```
+
+## 🗄️ Sistema de Backup
+
+### Backup Automático de Repositorios
+
+```bash
+# Backup de todos los repositorios IA-Ops
+./scripts/backup-repositories.sh
+
+# Backup de repositorios específicos
+./scripts/backup-repositories.sh /path/to/repo1 /path/to/repo2
+```
+
+### API de Backup
+
+```bash
+# Estado del sistema de backup
+curl http://localhost:8848/backup/status
+
+# Listar repositorios disponibles
+curl http://localhost:8848/backup/repositories
+
+# Crear backup vía API
+curl -X POST http://localhost:8848/backup/create \
+  -H "Content-Type: application/json" \
+  -d '{"repositories": [], "include_onedrive": false}'
+
+# Listar backups existentes
+curl http://localhost:8848/backup/list
+```
+
+### Configuración OneDrive
+
+Para habilitar backup en OneDrive, agregar a `.env`:
+
+```bash
+ONEDRIVE_ACCESS_TOKEN=your_microsoft_graph_token_here
+ONEDRIVE_FOLDER=IA-Ops-Backups
 ```
 
 ## 🔧 Configuración

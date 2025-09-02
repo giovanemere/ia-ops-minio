@@ -1,6 +1,6 @@
 # 🗄️ IA-Ops MinIO Storage Solution
 
-[![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/giovanemere/ia-ops-minio/releases)
 [![Docker](https://img.shields.io/badge/docker-ready-green.svg)](https://hub.docker.com/repositories/edissonz8809)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -58,8 +58,10 @@ open http://localhost:6540
 - **Documentación Dual**: MkDocs completo + API Docs integrada
 - **S3 Compatible**: API completamente compatible con Amazon S3
 - **REST API**: Endpoints personalizados para gestión simplificada
+- **PostgreSQL Integration**: Logging y estadísticas en base de datos
 - **Docker Ready**: Un solo contenedor para todo el ecosistema
 - **Auto-setup**: Buckets y políticas preconfiguradas
+- **Security**: Claves JWT y API generadas automáticamente
 
 ## 🛠️ Scripts Disponibles
 
@@ -67,6 +69,7 @@ open http://localhost:6540
 |--------|---------|-----|
 | `deploy-clean.sh` | **Despliegue limpio completo** | **⭐ Recomendado** |
 | `manage.sh` | **Gestión de servicios** | **⭐ Uso diario** |
+| `update-env.sh` | **Actualizar variables de entorno** | **⭐ Configuración** |
 | `verify-system.sh` | Verificar estado del sistema | Diagnóstico |
 | `build-integrated.sh` | Solo build local | Desarrollo |
 | `publish-integrated.sh` | Solo publicar a Docker Hub | CI/CD |
@@ -92,6 +95,22 @@ open http://localhost:6540
 
 ## 🔧 Configuración
 
+### Configuración Automática (Recomendado)
+
+```bash
+# Actualizar variables automáticamente
+./scripts/update-env.sh
+
+# Aplicar cambios
+./scripts/manage.sh restart
+```
+
+El script `update-env.sh`:
+- ✅ Detecta automáticamente PostgreSQL existente
+- ✅ Genera claves de seguridad únicas
+- ✅ Crea backup del .env actual
+- ✅ Configura todas las variables necesarias
+
 ### Variables de Entorno (.env)
 
 #### Configuración Básica
@@ -99,6 +118,14 @@ open http://localhost:6540
 # MinIO Credentials
 MINIO_ROOT_USER=minioadmin
 MINIO_ROOT_PASSWORD=minioadmin123
+
+# PostgreSQL Database Configuration
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=veritas_db
+POSTGRES_USER=veritas_user
+POSTGRES_PASSWORD=veritas_password
+DATABASE_URL=postgresql://veritas_user:veritas_password@localhost:5432/veritas_db
 
 # Ports Configuration
 DASHBOARD_PORT=6540
@@ -110,6 +137,10 @@ DOCS_PORT=6541
 # Storage Configuration
 MINIO_DATA_DIR=./data
 MINIO_LOGS_DIR=./logs
+
+# Security Configuration
+JWT_SECRET_KEY=your-secret-key-here
+API_KEY=your-api-key-here
 ```
 
 #### Configuración de Producción

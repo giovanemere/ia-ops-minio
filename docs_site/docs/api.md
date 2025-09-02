@@ -14,7 +14,9 @@ GET /health
   "status": "healthy",
   "timestamp": "2025-09-02T01:01:58.649530",
   "buckets_count": 9,
-  "minio_endpoint": "localhost:9000"
+  "minio_endpoint": "localhost:9000",
+  "database_available": true,
+  "environment": "development"
 }
 ```
 
@@ -103,6 +105,44 @@ GET /stats
 }
 ```
 
+### Historial de Operaciones
+
+```http
+GET /operations/history
+```
+
+**Respuesta:**
+```json
+{
+  "message": "Operations history endpoint",
+  "note": "Implementation pending"
+}
+```
+
+## 🗄️ Integración con PostgreSQL
+
+La API registra automáticamente todas las operaciones en PostgreSQL:
+
+- **Operaciones**: Cada llamada a la API se registra con timestamp, IP, user-agent
+- **Estadísticas**: Los datos de MinIO se guardan periódicamente
+- **Logs**: Errores y métricas de rendimiento
+
+### Tablas de Base de Datos
+
+#### `minio_operations`
+- `operation_type`: Tipo de operación (health_check, list_buckets, etc.)
+- `bucket_name`: Nombre del bucket (si aplica)
+- `user_agent`: User-Agent del cliente
+- `ip_address`: Dirección IP del cliente
+- `success`: Si la operación fue exitosa
+- `response_time_ms`: Tiempo de respuesta en milisegundos
+
+#### `minio_stats`
+- `total_buckets`: Total de buckets
+- `total_objects`: Total de objetos
+- `total_size_bytes`: Tamaño total en bytes
+- `snapshot_data`: Datos detallados en JSON
+
 ## 🔧 Ejemplos de Uso
 
 ### Python
@@ -144,6 +184,9 @@ curl "http://localhost:8848/buckets/static-assets/objects?prefix=docs/&recursive
 
 # Estadísticas del sistema
 curl http://localhost:8848/stats
+
+# Historial de operaciones
+curl http://localhost:8848/operations/history
 ```
 
 ### JavaScript
@@ -172,11 +215,12 @@ fetch('http://localhost:8848/stats')
 
 ## 🔐 Configuración
 
-La API se conecta a MinIO usando:
+La API se conecta a:
 
-- **Endpoint**: `localhost:9898`
-- **Usuario**: `minioadmin`
-- **Contraseña**: `minioadmin123`
+- **MinIO**: `localhost:9898`
+- **PostgreSQL**: `localhost:5432/veritas_db`
+- **Usuario MinIO**: `minioadmin`
+- **Contraseña MinIO**: `minioadmin123`
 
 ## 📈 Códigos de Estado
 
@@ -185,6 +229,7 @@ La API se conecta a MinIO usando:
 | 200 | Operación exitosa |
 | 404 | Recurso no encontrado |
 | 500 | Error interno del servidor |
+| 503 | Servicio no disponible (base de datos) |
 
 ## 🌐 CORS
 

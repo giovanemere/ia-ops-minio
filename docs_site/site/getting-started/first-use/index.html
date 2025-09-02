@@ -12,26 +12,28 @@
         <meta name="author" content="IA-Ops Team">
       
       
-        <link rel="canonical" href="https://giovanemere.github.io/ia-ops-minio/">
+        <link rel="canonical" href="https://giovanemere.github.io/ia-ops-minio/getting-started/first-use/">
       
       
+        <link rel="prev" href="../configuration/">
       
-        <link rel="next" href="getting-started/installation/">
+      
+        <link rel="next" href="../../minio/what-is-minio/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
-        <title>IA-Ops MinIO Documentation</title>
+        <title>Primer Uso - IA-Ops MinIO Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ia-ops-minio-portal" class="md-skip">
+        <a href="#primer-uso" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -90,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="." title="IA-Ops MinIO Documentation" class="md-header__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
+    <a href="../.." title="IA-Ops MinIO Documentation" class="md-header__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Inicio
+              Primer Uso
             
           </span>
         </div>
@@ -220,11 +222,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -239,11 +239,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="getting-started/installation/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../installation/" class="md-tabs__link">
           
   
   Guía de Inicio
@@ -261,7 +263,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="minio/what-is-minio/" class="md-tabs__link">
+        <a href="../../minio/what-is-minio/" class="md-tabs__link">
           
   
   MinIO
@@ -279,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="api/introduction/" class="md-tabs__link">
+        <a href="../../api/introduction/" class="md-tabs__link">
           
   
   API REST
@@ -295,7 +297,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="api-docs/" class="md-tabs__link">
+      <a href="../../api-docs/" class="md-tabs__link">
         
   
     
@@ -314,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="deployment/docker/" class="md-tabs__link">
+        <a href="../../deployment/docker/" class="md-tabs__link">
           
   
   Despliegue
@@ -332,7 +334,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="scripts/commands/" class="md-tabs__link">
+        <a href="../../scripts/commands/" class="md-tabs__link">
           
   
   Scripts
@@ -350,7 +352,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="reference/environment/" class="md-tabs__link">
+        <a href="../../reference/environment/" class="md-tabs__link">
           
   
   Referencia
@@ -383,7 +385,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="IA-Ops MinIO Documentation" class="md-nav__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
+    <a href="../.." title="IA-Ops MinIO Documentation" class="md-nav__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -410,6 +412,117 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Guía de Inicio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Guía de Inicio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuración
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -426,7 +539,7 @@
           
   
   <span class="md-ellipsis">
-    Inicio
+    Primer Uso
     
   </span>
   
@@ -434,11 +547,11 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Inicio
+    Primer Uso
     
   </span>
   
@@ -461,36 +574,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enlaces-rapidos" class="md-nav__link">
+  <a href="#verificar-instalacion" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 Enlaces Rápidos
+      Verificar Instalación
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas" class="md-nav__link">
+  <a href="#acceder-al-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 Características
+      Acceder al Dashboard
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracion-rapida" class="md-nav__link">
+  <a href="#primer-acceso-a-minio-console" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 Configuración Rápida
+      Primer Acceso a MinIO Console
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#urls-de-acceso" class="md-nav__link">
+  <a href="#crear-tu-primer-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 URLs de Acceso
+      Crear tu Primer Bucket
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crear tu Primer Bucket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desde-minio-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desde MinIO Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desde-api-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desde API REST
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subir-tu-primer-archivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subir tu Primer Archivo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subir tu Primer Archivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usando-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usando Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usando-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usando curl
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos Pasos
     </span>
   </a>
   
@@ -500,114 +679,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Guía de Inicio
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Guía de Inicio
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="getting-started/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Instalación
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="getting-started/configuration/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Configuración
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="getting-started/first-use/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Primer Uso
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -670,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minio/what-is-minio/" class="md-nav__link">
+      <a href="../../minio/what-is-minio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -692,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minio/architecture/" class="md-nav__link">
+      <a href="../../minio/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -714,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minio/buckets-objects/" class="md-nav__link">
+      <a href="../../minio/buckets-objects/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -736,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minio/access-policies/" class="md-nav__link">
+      <a href="../../minio/access-policies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/introduction/" class="md-nav__link">
+      <a href="../../api/introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -830,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/endpoints/" class="md-nav__link">
+      <a href="../../api/endpoints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -852,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/examples/" class="md-nav__link">
+      <a href="../../api/examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api-docs/" class="md-nav__link">
+      <a href="../../api-docs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -945,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deployment/docker/" class="md-nav__link">
+      <a href="../../deployment/docker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -967,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deployment/production/" class="md-nav__link">
+      <a href="../../deployment/production/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -989,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deployment/monitoring/" class="md-nav__link">
+      <a href="../../deployment/monitoring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1061,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scripts/commands/" class="md-nav__link">
+      <a href="../../scripts/commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1083,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scripts/automation/" class="md-nav__link">
+      <a href="../../scripts/automation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1155,7 +1226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/environment/" class="md-nav__link">
+      <a href="../../reference/environment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1177,7 +1248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/troubleshooting/" class="md-nav__link">
+      <a href="../../reference/troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1226,36 +1297,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enlaces-rapidos" class="md-nav__link">
+  <a href="#verificar-instalacion" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 Enlaces Rápidos
+      Verificar Instalación
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas" class="md-nav__link">
+  <a href="#acceder-al-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 Características
+      Acceder al Dashboard
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracion-rapida" class="md-nav__link">
+  <a href="#primer-acceso-a-minio-console" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 Configuración Rápida
+      Primer Acceso a MinIO Console
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#urls-de-acceso" class="md-nav__link">
+  <a href="#crear-tu-primer-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 URLs de Acceso
+      Crear tu Primer Bucket
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crear tu Primer Bucket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desde-minio-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desde MinIO Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desde-api-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desde API REST
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subir-tu-primer-archivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subir tu Primer Archivo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subir tu Primer Archivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usando-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usando Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usando-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usando curl
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos Pasos
     </span>
   </a>
   
@@ -1280,69 +1417,65 @@
   
 
 
-<h1 id="ia-ops-minio-portal">🗄️ IA-Ops MinIO Portal</h1>
-<p>Bienvenido al portal de documentación de IA-Ops MinIO.</p>
-<h2 id="enlaces-rapidos">🚀 Enlaces Rápidos</h2>
-<ul>
-<li><strong><a href="api-docs/">Documentación de APIs</a></strong> - Guía completa de las APIs REST y MinIO</li>
-<li><strong><a href="http://localhost:9899">MinIO Console</a></strong> - Interfaz web de administración</li>
-<li><strong><a href="http://localhost:6540">Dashboard</a></strong> - Portal principal</li>
-</ul>
-<h2 id="caracteristicas">📦 Características</h2>
-<ul>
-<li><strong>S3 Compatible</strong>: API completamente compatible con Amazon S3</li>
-<li><strong>Portal Unificado</strong>: Dashboard web integrado</li>
-<li><strong>Documentación</strong>: Guías y referencias completas</li>
-<li><strong>API REST</strong>: Endpoints personalizados para gestión</li>
-</ul>
-<h2 id="configuracion-rapida">🔧 Configuración Rápida</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Clonar repositorio</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:giovanemere/ia-ops-minio.git
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span><span class="w"> </span>ia-ops-minio
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Despliegue completo</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>./scripts/deploy-clean.sh
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Acceder al dashboard</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>open<span class="w"> </span>http://localhost:6540
+<h1 id="primer-uso">🚀 Primer Uso</h1>
+<h2 id="verificar-instalacion">Verificar Instalación</h2>
+<p>Después de la instalación, verifica que todos los servicios estén funcionando:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Verificar estado de servicios</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./scripts/verify-system.sh
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Ver logs</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.integrated.yml<span class="w"> </span>logs<span class="w"> </span>-f
 </code></pre></div>
-<h2 id="urls-de-acceso">🌐 URLs de Acceso</h2>
-<table>
-<thead>
-<tr>
-<th>Servicio</th>
-<th>URL</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dashboard</td>
-<td>http://localhost:6540</td>
-<td>Portal principal</td>
-</tr>
-<tr>
-<td>MinIO Console</td>
-<td>http://localhost:9899</td>
-<td>Administración web</td>
-</tr>
-<tr>
-<td>Documentación</td>
-<td>http://localhost:6541</td>
-<td>Esta documentación</td>
-</tr>
-<tr>
-<td>REST API</td>
-<td>http://localhost:8848</td>
-<td>API personalizada</td>
-</tr>
-<tr>
-<td>MinIO API</td>
-<td>http://localhost:9898</td>
-<td>API S3 compatible</td>
-</tr>
-</tbody>
-</table>
+<h2 id="acceder-al-dashboard">Acceder al Dashboard</h2>
+<ol>
+<li>Abre tu navegador en: http://localhost:6540</li>
+<li>Verifica que todos los servicios estén en verde</li>
+<li>Explora las diferentes secciones</li>
+</ol>
+<h2 id="primer-acceso-a-minio-console">Primer Acceso a MinIO Console</h2>
+<ol>
+<li>Ve a: http://localhost:9899</li>
+<li>Usa las credenciales por defecto:</li>
+<li><strong>Usuario</strong>: <code>minioadmin</code></li>
+<li><strong>Contraseña</strong>: <code>minioadmin123</code></li>
+</ol>
+<h2 id="crear-tu-primer-bucket">Crear tu Primer Bucket</h2>
+<h3 id="desde-minio-console">Desde MinIO Console</h3>
+<ol>
+<li>Accede a MinIO Console</li>
+<li>Click en "Create Bucket"</li>
+<li>Nombra tu bucket: <code>mi-primer-bucket</code></li>
+<li>Click "Create Bucket"</li>
+</ol>
+<h3 id="desde-api-rest">Desde API REST</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8848/api/buckets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;: &quot;mi-primer-bucket&quot;}&#39;</span>
+</code></pre></div>
+<h2 id="subir-tu-primer-archivo">Subir tu Primer Archivo</h2>
+<h3 id="usando-python">Usando Python</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="s1">&#39;s3&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:9898&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s1">&#39;minioadmin&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s1">&#39;minioadmin123&#39;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Subir archivo</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s1">&#39;archivo.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;mi-primer-bucket&#39;</span><span class="p">,</span> <span class="s1">&#39;archivo.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="usando-curl">Usando curl</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost:9898/mi-primer-bucket/archivo.txt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--data-binary<span class="w"> </span>@archivo.txt
+</code></pre></div>
+<h2 id="proximos-pasos">Próximos Pasos</h2>
+<ul>
+<li><a href="../configuration/">Configuración Avanzada</a></li>
+<li><a href="../../deployment/production/">Despliegue en Producción</a></li>
+<li><a href="../../api/introduction/">API REST</a></li>
+</ul>
 
 
 
@@ -1425,10 +1558,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

@@ -12,26 +12,28 @@
         <meta name="author" content="IA-Ops Team">
       
       
-        <link rel="canonical" href="https://giovanemere.github.io/ia-ops-minio/">
+        <link rel="canonical" href="https://giovanemere.github.io/ia-ops-minio/minio/architecture/">
       
       
+        <link rel="prev" href="../what-is-minio/">
       
-        <link rel="next" href="getting-started/installation/">
+      
+        <link rel="next" href="../buckets-objects/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
-        <title>IA-Ops MinIO Documentation</title>
+        <title>Arquitectura - IA-Ops MinIO Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ia-ops-minio-portal" class="md-skip">
+        <a href="#arquitectura" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -90,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="." title="IA-Ops MinIO Documentation" class="md-header__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
+    <a href="../.." title="IA-Ops MinIO Documentation" class="md-header__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Inicio
+              Arquitectura
             
           </span>
         </div>
@@ -220,11 +222,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -243,7 +243,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="getting-started/installation/" class="md-tabs__link">
+        <a href="../../getting-started/installation/" class="md-tabs__link">
           
   
   Guía de Inicio
@@ -257,11 +257,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="minio/what-is-minio/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../what-is-minio/" class="md-tabs__link">
           
   
   MinIO
@@ -279,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="api/introduction/" class="md-tabs__link">
+        <a href="../../api/introduction/" class="md-tabs__link">
           
   
   API REST
@@ -295,7 +297,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="api-docs/" class="md-tabs__link">
+      <a href="../../api-docs/" class="md-tabs__link">
         
   
     
@@ -314,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="deployment/docker/" class="md-tabs__link">
+        <a href="../../deployment/docker/" class="md-tabs__link">
           
   
   Despliegue
@@ -332,7 +334,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="scripts/commands/" class="md-tabs__link">
+        <a href="../../scripts/commands/" class="md-tabs__link">
           
   
   Scripts
@@ -350,7 +352,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="reference/environment/" class="md-tabs__link">
+        <a href="../../reference/environment/" class="md-tabs__link">
           
   
   Referencia
@@ -383,7 +385,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="IA-Ops MinIO Documentation" class="md-nav__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
+    <a href="../.." title="IA-Ops MinIO Documentation" class="md-nav__button md-logo" aria-label="IA-Ops MinIO Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -410,31 +412,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Inicio
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -444,62 +425,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#enlaces-rapidos" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Enlaces Rápidos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#caracteristicas" class="md-nav__link">
-    <span class="md-ellipsis">
-      📦 Características
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracion-rapida" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 Configuración Rápida
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#urls-de-acceso" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌐 URLs de Acceso
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -554,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/installation/" class="md-nav__link">
+      <a href="../../getting-started/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -576,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/configuration/" class="md-nav__link">
+      <a href="../../getting-started/configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -598,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/first-use/" class="md-nav__link">
+      <a href="../../getting-started/first-use/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -624,27 +549,30 @@
       
   
   
+    
   
   
+  
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -656,7 +584,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             MinIO
@@ -670,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minio/what-is-minio/" class="md-nav__link">
+      <a href="../what-is-minio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -689,10 +617,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="minio/architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Arquitectura
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -702,6 +651,203 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura General
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#componentes-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Componentes Principales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Componentes Principales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-puerto-6540" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏠 Dashboard (Puerto 6540)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minio-console-puerto-9899" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖥️ MinIO Console (Puerto 9899)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rest-api-puerto-8848" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 REST API (Puerto 8848)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minio-api-puerto-9898" class="md-nav__link">
+    <span class="md-ellipsis">
+      📡 MinIO API (Puerto 9898)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-puerto-6541" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 MkDocs (Puerto 6541)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flujo de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subida-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subida de Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-via-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión via REST API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#administracion-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administración Web
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escalabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escalabilidad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Escalabilidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Horizontal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertical
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -714,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minio/buckets-objects/" class="md-nav__link">
+      <a href="../buckets-objects/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -736,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="minio/access-policies/" class="md-nav__link">
+      <a href="../access-policies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/introduction/" class="md-nav__link">
+      <a href="../../api/introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -830,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/endpoints/" class="md-nav__link">
+      <a href="../../api/endpoints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -852,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/examples/" class="md-nav__link">
+      <a href="../../api/examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api-docs/" class="md-nav__link">
+      <a href="../../api-docs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -945,7 +1091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deployment/docker/" class="md-nav__link">
+      <a href="../../deployment/docker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -967,7 +1113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deployment/production/" class="md-nav__link">
+      <a href="../../deployment/production/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -989,7 +1135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deployment/monitoring/" class="md-nav__link">
+      <a href="../../deployment/monitoring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1061,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scripts/commands/" class="md-nav__link">
+      <a href="../../scripts/commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1083,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scripts/automation/" class="md-nav__link">
+      <a href="../../scripts/automation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1155,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/environment/" class="md-nav__link">
+      <a href="../../reference/environment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1177,7 +1323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/troubleshooting/" class="md-nav__link">
+      <a href="../../reference/troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1226,38 +1372,179 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enlaces-rapidos" class="md-nav__link">
+  <a href="#arquitectura-general" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 Enlaces Rápidos
+      Arquitectura General
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#caracteristicas" class="md-nav__link">
+  <a href="#componentes-principales" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 Características
+      Componentes Principales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Componentes Principales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-puerto-6540" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏠 Dashboard (Puerto 6540)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracion-rapida" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#minio-console-puerto-9899" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 Configuración Rápida
+      🖥️ MinIO Console (Puerto 9899)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#urls-de-acceso" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#rest-api-puerto-8848" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 URLs de Acceso
+      🚀 REST API (Puerto 8848)
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minio-api-puerto-9898" class="md-nav__link">
+    <span class="md-ellipsis">
+      📡 MinIO API (Puerto 9898)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-puerto-6541" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 MkDocs (Puerto 6541)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flujo de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subida-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subida de Archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-via-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión via REST API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#administracion-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administración Web
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autenticación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escalabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escalabilidad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Escalabilidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Horizontal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertical
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1280,69 +1567,101 @@
   
 
 
-<h1 id="ia-ops-minio-portal">🗄️ IA-Ops MinIO Portal</h1>
-<p>Bienvenido al portal de documentación de IA-Ops MinIO.</p>
-<h2 id="enlaces-rapidos">🚀 Enlaces Rápidos</h2>
+<h1 id="arquitectura">🏗️ Arquitectura</h1>
+<h2 id="arquitectura-general">Arquitectura General</h2>
+<pre class="mermaid"><code>graph TB
+    A[Dashboard 6540] --&gt; B[MinIO Console 9899]
+    A --&gt; C[REST API 8848]
+    A --&gt; D[MinIO API 9898]
+    A --&gt; E[MkDocs 6541]
+
+    C --&gt; F[MinIO Server]
+    D --&gt; F
+    B --&gt; F
+
+    F --&gt; G[Data Storage]
+    F --&gt; H[Buckets]</code></pre>
+<h2 id="componentes-principales">Componentes Principales</h2>
+<h3 id="dashboard-puerto-6540">🏠 Dashboard (Puerto 6540)</h3>
 <ul>
-<li><strong><a href="api-docs/">Documentación de APIs</a></strong> - Guía completa de las APIs REST y MinIO</li>
-<li><strong><a href="http://localhost:9899">MinIO Console</a></strong> - Interfaz web de administración</li>
-<li><strong><a href="http://localhost:6540">Dashboard</a></strong> - Portal principal</li>
+<li>Portal web unificado</li>
+<li>Interfaz de administración</li>
+<li>Enlaces a todos los servicios</li>
+<li>Documentación integrada</li>
 </ul>
-<h2 id="caracteristicas">📦 Características</h2>
+<h3 id="minio-console-puerto-9899">🖥️ MinIO Console (Puerto 9899)</h3>
 <ul>
-<li><strong>S3 Compatible</strong>: API completamente compatible con Amazon S3</li>
-<li><strong>Portal Unificado</strong>: Dashboard web integrado</li>
-<li><strong>Documentación</strong>: Guías y referencias completas</li>
-<li><strong>API REST</strong>: Endpoints personalizados para gestión</li>
+<li>Interfaz web oficial de MinIO</li>
+<li>Administración de buckets y objetos</li>
+<li>Gestión de usuarios y políticas</li>
+<li>Monitoreo del sistema</li>
 </ul>
-<h2 id="configuracion-rapida">🔧 Configuración Rápida</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Clonar repositorio</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:giovanemere/ia-ops-minio.git
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span><span class="w"> </span>ia-ops-minio
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Despliegue completo</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>./scripts/deploy-clean.sh
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Acceder al dashboard</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>open<span class="w"> </span>http://localhost:6540
-</code></pre></div>
-<h2 id="urls-de-acceso">🌐 URLs de Acceso</h2>
-<table>
-<thead>
-<tr>
-<th>Servicio</th>
-<th>URL</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dashboard</td>
-<td>http://localhost:6540</td>
-<td>Portal principal</td>
-</tr>
-<tr>
-<td>MinIO Console</td>
-<td>http://localhost:9899</td>
-<td>Administración web</td>
-</tr>
-<tr>
-<td>Documentación</td>
-<td>http://localhost:6541</td>
-<td>Esta documentación</td>
-</tr>
-<tr>
-<td>REST API</td>
-<td>http://localhost:8848</td>
-<td>API personalizada</td>
-</tr>
-<tr>
-<td>MinIO API</td>
-<td>http://localhost:9898</td>
-<td>API S3 compatible</td>
-</tr>
-</tbody>
-</table>
+<h3 id="rest-api-puerto-8848">🚀 REST API (Puerto 8848)</h3>
+<ul>
+<li>API personalizada para gestión</li>
+<li>Endpoints simplificados</li>
+<li>Integración con aplicaciones</li>
+<li>Operaciones CRUD en buckets</li>
+</ul>
+<h3 id="minio-api-puerto-9898">📡 MinIO API (Puerto 9898)</h3>
+<ul>
+<li>API S3 compatible</li>
+<li>Protocolo estándar de Amazon S3</li>
+<li>Compatible con SDKs existentes</li>
+<li>Operaciones de almacenamiento</li>
+</ul>
+<h3 id="mkdocs-puerto-6541">📚 MkDocs (Puerto 6541)</h3>
+<ul>
+<li>Documentación completa</li>
+<li>Material Design theme</li>
+<li>Navegación estructurada</li>
+<li>Contenido markdown</li>
+</ul>
+<h2 id="flujo-de-datos">Flujo de Datos</h2>
+<h3 id="subida-de-archivos">Subida de Archivos</h3>
+<ol>
+<li>Cliente → MinIO API (9898)</li>
+<li>MinIO API → MinIO Server</li>
+<li>MinIO Server → Almacenamiento</li>
+</ol>
+<h3 id="gestion-via-rest-api">Gestión via REST API</h3>
+<ol>
+<li>Cliente → REST API (8848)</li>
+<li>REST API → MinIO Server</li>
+<li>Respuesta → Cliente</li>
+</ol>
+<h3 id="administracion-web">Administración Web</h3>
+<ol>
+<li>Usuario → MinIO Console (9899)</li>
+<li>Console → MinIO Server</li>
+<li>Operaciones → Almacenamiento</li>
+</ol>
+<h2 id="seguridad">Seguridad</h2>
+<h3 id="autenticacion">Autenticación</h3>
+<ul>
+<li>Credenciales por defecto: <code>minioadmin/minioadmin123</code></li>
+<li>Soporte para múltiples usuarios</li>
+<li>Políticas de acceso granulares</li>
+</ul>
+<h3 id="comunicacion">Comunicación</h3>
+<ul>
+<li>HTTP para desarrollo</li>
+<li>HTTPS recomendado para producción</li>
+<li>Tokens de acceso temporales</li>
+</ul>
+<h2 id="escalabilidad">Escalabilidad</h2>
+<h3 id="horizontal">Horizontal</h3>
+<ul>
+<li>Múltiples nodos MinIO</li>
+<li>Distribución de datos</li>
+<li>Alta disponibilidad</li>
+</ul>
+<h3 id="vertical">Vertical</h3>
+<ul>
+<li>Aumento de recursos</li>
+<li>Optimización de almacenamiento</li>
+<li>Cache y performance</li>
+</ul>
 
 
 
@@ -1425,10 +1744,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

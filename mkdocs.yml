@@ -1,7 +1,7 @@
 site_name: IA-Ops MinIO Documentation
 site_description: Documentación completa del sistema MinIO para IA-Ops
 site_author: IA-Ops Team
-site_url: https://ia-ops-minio.docs
+site_url: https://giovanemere.github.io/ia-ops-minio/
 
 repo_name: giovanemere/ia-ops-minio
 repo_url: https://github.com/giovanemere/ia-ops-minio
@@ -66,8 +66,8 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Inicio: index.md

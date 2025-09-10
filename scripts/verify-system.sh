@@ -55,16 +55,16 @@ TEST_FILE="/tmp/minio-test-$(date +%s).txt"
 echo "IA-Ops MinIO Test File - $(date)" > "$TEST_FILE"
 
 # Upload test file
-if curl -s -X POST -F "file=@$TEST_FILE" http://localhost:8848/buckets/techdocs-storage/objects > /dev/null; then
+if curl -s -X POST -F "file=@$TEST_FILE" http://localhost:8848/buckets/iaops-portal/objects > /dev/null; then
     echo -e "${GREEN}✅ File Upload: OK${NC}"
     
     # Try to download
     FILENAME=$(basename "$TEST_FILE")
-    if curl -f -s "http://localhost:8848/buckets/techdocs-storage/objects/$FILENAME" > /dev/null; then
+    if curl -f -s "http://localhost:8848/buckets/iaops-portal/objects/$FILENAME" > /dev/null; then
         echo -e "${GREEN}✅ File Download: OK${NC}"
         
         # Clean up
-        curl -s -X DELETE "http://localhost:8848/buckets/techdocs-storage/objects/$FILENAME" > /dev/null
+        curl -s -X DELETE "http://localhost:8848/buckets/iaops-portal/objects/$FILENAME" > /dev/null
         echo -e "${GREEN}✅ File Cleanup: OK${NC}"
     else
         echo -e "${RED}❌ File Download: FAILED${NC}"

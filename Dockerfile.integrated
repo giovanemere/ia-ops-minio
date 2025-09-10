@@ -31,16 +31,17 @@ COPY mkdocs.yml .
 COPY scripts/ ./scripts/
 COPY config/ ./config/
 
-# Create directories
-RUN mkdir -p /data /app/logs /etc/supervisor/conf.d
+# Create directories and set permissions
+RUN mkdir -p /data /app/logs /etc/supervisor/conf.d /var/run /var/log/supervisor
 
 # Copy configuration files
 COPY config/supervisor.conf /etc/supervisor/conf.d/
 COPY config/nginx.conf /etc/nginx/sites-available/default
 
-# Create user
+# Create user and set permissions
 RUN groupadd -r appuser && useradd -r -g appuser appuser
-RUN chown -R appuser:appuser /app /data
+RUN chown -R appuser:appuser /app /data /var/log/supervisor
+RUN chmod -R 755 /app /data
 RUN chown appuser:appuser /usr/local/bin/minio /usr/local/bin/mc
 
 EXPOSE 6540 9000 9001 8848 6541

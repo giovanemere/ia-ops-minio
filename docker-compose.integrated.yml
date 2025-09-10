@@ -1,35 +1,56 @@
-version: '3.8'
-
 services:
   ia-ops-minio-integrated:
-    build:
-      context: .
-      dockerfile: Dockerfile.integrated
-    container_name: ia-ops-minio-portal
+    image: edissonz8809/ia-ops-minio-integrated:latest
+    container_name: iaops-minio-portal
     restart: unless-stopped
     ports:
-      - "6540:6540"       # Dashboard principal
-      - "9898:9000"       # MinIO API (mantener puerto actual)
-      - "9899:9001"       # MinIO Console (mantener puerto actual)
-      - "8848:8848"       # REST API (mantener puerto actual)
-      - "6541:6541"       # Docs (mantener puerto actual)
-    volumes:
-      - ./data:/data
-      - ./logs:/app/logs
+    - 6540:6540
+    - ${MINIO_API_PORT:-9898}:9000
+    - ${MINIO_CONSOLE_PORT:-9899}:9001
+    - 8848:8848
+    - 6541:6541
     environment:
-      - MINIO_ROOT_USER=${MINIO_ROOT_USER:-minioadmin}
-      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD:-minioadmin123}
-      - MINIO_ENDPOINT=localhost:9000
+    - MINIO_ROOT_USER=${MINIO_ROOT_USER:-minioadmin}
+    - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD:-minioadmin123}
+    - MINIO_ENDPOINT=${MINIO_ENDPOINT:-ia-ops-minio-portal:9000}
+    volumes:
+    - minio-data:/data
+    - minio-config:/root/.minio
+    - ./data:/app/data
+    - ./buckets:/app/buckets
+    - /home/giovanemere/terpel/backups:/app/backups
     networks:
-      - minio-integrated
+    - ia-ops-minio-integrated
+    - iaops-shared-network
+    - iaops-database-network
+    - iaops-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6540/health"]
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://localhost:6540/health
       interval: 30s
       timeout: 20s
       retries: 3
       start_period: 60s
 
+volumes:
+  minio-data:
+    driver: local
+  minio-config:
+    driver: local
+
 networks:
-  minio-integrated:
+  ia-ops-minio-integrated:
     driver: bridge
     name: ia-ops-minio-integrated
+  iaops-shared-network:
+    external: true
+    name: iaops-shared-network
+  iaops-database-network:
+    external: true
+    name: iaops-database-network
+  iaops-network:
+    name: iaops-network
+    external: true

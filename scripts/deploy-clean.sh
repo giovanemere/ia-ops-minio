@@ -36,12 +36,16 @@ echo -e "${GREEN}✅ Cleanup completed${NC}"
 echo -e "${YELLOW}🏗️  Step 2: Building integrated image...${NC}"
 docker compose -f docker-compose.integrated.yml build --no-cache
 
-# Step 3: Start services
-echo -e "${YELLOW}🚀 Step 3: Starting integrated services...${NC}"
+# Step 3: Fix permissions
+echo -e "${YELLOW}🔧 Step 3: Setting correct permissions...${NC}"
+./scripts/fix-permissions.sh
+
+# Step 4: Start services
+echo -e "${YELLOW}🚀 Step 4: Starting integrated services...${NC}"
 docker compose -f docker-compose.integrated.yml up -d
 
-# Step 4: Wait and verify
-echo -e "${YELLOW}⏳ Step 4: Waiting for services...${NC}"
+# Step 5: Wait and verify
+echo -e "${YELLOW}⏳ Step 5: Waiting for services...${NC}"
 sleep 30
 
 # Verify services
